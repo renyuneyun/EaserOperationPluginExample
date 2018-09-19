@@ -22,10 +22,12 @@ package ryey.easeroperationpluginexample;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ryey.easer.commons.PluginDataFormat;
+import ryey.easer.plugin.PluginDataFormat;
 import ryey.easer.remote_plugin.RemoteOperationData;
 
 class ExampleData {
+    public static final String K_PKGNAME = "package";
+
     public final String packageName;
 
     ExampleData(String packageName) {
@@ -36,7 +38,22 @@ class ExampleData {
         if (remoteOperationData.format == PluginDataFormat.JSON) {
             try {
                 JSONObject jsonObject = new JSONObject(remoteOperationData.rawData);
-                packageName = jsonObject.getString("package");
+                packageName = jsonObject.getString(K_PKGNAME);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                throw new IllegalStateException();
+            }
+        } else {
+            throw new IllegalAccessError();
+        }
+    }
+
+    public String serialize(PluginDataFormat format) {
+        if (format == PluginDataFormat.JSON) {
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put(K_PKGNAME, packageName);
+                return jsonObject.toString();
             } catch (JSONException e) {
                 e.printStackTrace();
                 throw new IllegalStateException();

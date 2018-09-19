@@ -1,2 +1,2 @@
-include ':app', ':remote_plugin'
-project(':remote_plugin').projectDir=new File('/home/ryey/coding/Easer/remote_plugin')
+include ':app', ':plugin'
+project(':plugin').projectDir=new File('../Easer/plugin')

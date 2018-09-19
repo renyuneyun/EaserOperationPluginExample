@@ -33,10 +33,10 @@ public class PluginInfoReceiver extends BroadcastReceiver {
         if (RemotePlugin.ACTION_REQUEST_PLUGIN_INFO.equals(intent.getAction())) {
             Intent response = new Intent(RemotePlugin.ACTION_RESPONSE_PLUGIN_INFO);
             response.putExtra(RemotePlugin.EXTRA_PACKAGE_NAME, context.getPackageName());
-            response.putExtra(RemotePlugin.EXTRA_PLUGIN_NAME, "Example Plugin");
-            response.putExtra(RemotePlugin.EXTRA_PLUGIN_ID, "ryey.easer_operation_plugin_example.plugin_id");
+            response.putExtra(RemotePlugin.EXTRA_PLUGIN_NAME, ExamplePluginInfo.NAME);
+            response.putExtra(RemotePlugin.EXTRA_PLUGIN_ID, ExamplePluginInfo.ID);
             response.putExtra(RemotePlugin.EXTRA_PLUGIN_TYPE, RemotePlugin.TYPE_OPERATION_PLUGIN);
-            response.putExtra(RemotePlugin.OperationPlugin.EXTRA_PLUGIN_CATEGORY, "lalalalala"); // Will be treated as "unknown"
+            response.putExtra(RemotePlugin.OperationPlugin.EXTRA_PLUGIN_CATEGORY, ExamplePluginInfo.CATEGORY);
             context.sendBroadcast(response);
         }
     }

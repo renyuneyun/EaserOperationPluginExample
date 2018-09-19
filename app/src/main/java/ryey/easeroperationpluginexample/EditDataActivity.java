@@ -27,12 +27,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import ryey.easer.commons.PluginDataFormat;
+import ryey.easer.plugin.PluginDataFormat;
 import ryey.easer.remote_plugin.RemoteOperationData;
 import ryey.easer.remote_plugin.RemotePlugin;
 
 public class EditDataActivity extends AppCompatActivity {
 
+    ExampleData data;
     private PluginDataFormat format;
     private EditText editText;
 
@@ -42,9 +43,11 @@ public class EditDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_data);
         Intent intent = getIntent();
         RemoteOperationData remoteOperationData = intent.getParcelableExtra(RemotePlugin.EXTRA_DATA);
-        editText = findViewById(R.id.editText);
-        editText.setText(remoteOperationData.rawData);
+        data = new ExampleData(remoteOperationData);
         format = remoteOperationData.format;
+        editText = findViewById(R.id.editText);
+
+        editText.setText(data.packageName);
     }
 
     @Override
@@ -56,12 +59,13 @@ public class EditDataActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.ok) {
-            String data = editText.getText().toString();
+            data = new ExampleData(editText.getText().toString());
             Intent intent = new Intent();
             if (format == null) {
                 format = PluginDataFormat.JSON;
             }
-            RemoteOperationData remoteOperationData = new RemoteOperationData("ryey.easer_operation_plugin_example.plugin_id", format, data);
+            RemoteOperationData remoteOperationData = new RemoteOperationData(
+                    ExamplePluginInfo.ID, format, data.serialize(format));
             intent.putExtra(RemotePlugin.EXTRA_DATA, remoteOperationData);
             setResult(Activity.RESULT_OK, intent);
             finish();
