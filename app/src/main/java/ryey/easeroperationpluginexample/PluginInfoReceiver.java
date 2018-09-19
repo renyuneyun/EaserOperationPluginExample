@@ -37,6 +37,7 @@ public class PluginInfoReceiver extends BroadcastReceiver {
             response.putExtra(RemotePlugin.EXTRA_PLUGIN_ID, ExamplePluginInfo.ID);
             response.putExtra(RemotePlugin.EXTRA_PLUGIN_TYPE, RemotePlugin.TYPE_OPERATION_PLUGIN);
             response.putExtra(RemotePlugin.OperationPlugin.EXTRA_PLUGIN_CATEGORY, ExamplePluginInfo.CATEGORY);
+            response.putExtra(RemotePlugin.EXTRA_ACTIVITY_EDIT_DATA, ExamplePluginInfo.EDIT_DATA_ACTIVITY);
             context.sendBroadcast(response);
         }
     }

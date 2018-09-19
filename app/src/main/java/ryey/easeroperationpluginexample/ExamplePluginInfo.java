@@ -37,4 +37,9 @@ public final class ExamplePluginInfo {
      * This should be the String representation of one type in {@link ryey.easer.plugin.operation.Category}; otherwise {@code unknown}
      */
     public static final String CATEGORY = "lalalalala"; // Will be treated as "unknown"
+
+    /**
+     * The Activity used to edit data.
+     */
+    public static final String EDIT_DATA_ACTIVITY = EditDataActivity.class.getCanonicalName();
 }
