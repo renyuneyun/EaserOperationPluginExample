@@ -33,6 +33,7 @@ public class TriggerOperationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d("TriggerReceiver", "onReceive");
         if (RemotePlugin.OperationPlugin.ACTION_TRIGGER.equals(intent.getAction())) {
+            intent.setExtrasClassLoader(RemoteOperationData.class.getClassLoader());
             RemoteOperationData remoteOperationData = intent.getParcelableExtra(RemotePlugin.EXTRA_DATA);
             ExampleData data = new ExampleData(remoteOperationData);
             Intent startActivityIntent = context.getPackageManager().getLaunchIntentForPackage(data.packageName);
