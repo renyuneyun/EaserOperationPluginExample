@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/EaserOperationPluginExample.iml" filepath="$PROJECT_DIR$/EaserOperationPluginExample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Easer/plugin/plugin.iml" filepath="$PROJECT_DIR$/../Easer/plugin/plugin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Easer/remote_plugin/remote_plugin.iml" filepath="$PROJECT_DIR$/../Easer/remote_plugin/remote_plugin.iml" />
     </modules>
   </component>
 </project>
