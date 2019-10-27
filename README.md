@@ -3,7 +3,7 @@ Example Operation Remote Plugin for Easer
 
 This is an example Operation Remote Plugin for Easer. It's function is to launch an app's main Activity.
 
-It works from Easer v0.7 (until yet unknown future versions).
+It works from Easer v0.7.9 (until yet unknown future versions).
 
 Usage
 ------
