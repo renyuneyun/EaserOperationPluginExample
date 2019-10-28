@@ -37,7 +37,17 @@ public class TriggerOperationReceiver extends BroadcastReceiver {
             RemoteOperationData remoteOperationData = intent.getParcelableExtra(RemotePlugin.EXTRA_DATA);
             ExampleData data = new ExampleData(remoteOperationData);
             Intent startActivityIntent = context.getPackageManager().getLaunchIntentForPackage(data.packageName);
-            context.startActivity(startActivityIntent);
+            boolean success = false;
+            if (startActivityIntent != null) {
+                context.startActivity(startActivityIntent);
+                success = true;
+            }
+            Intent reply = new Intent(RemotePlugin.OperationPlugin.ACTION_TRIGGER_RESULT);
+            String replyPackage = intent.getStringExtra(RemotePlugin.EXTRA_REPLY_PACKAGE);
+            // For a correctly implemented communication (since Easer v0.7.9), we could `assert replyPackage != null`
+            reply.setPackage(replyPackage);
+            reply.putExtra(RemotePlugin.OperationPlugin.EXTRA_SUCCESS, success);
+            context.sendBroadcast(reply);
         }
     }
 }
