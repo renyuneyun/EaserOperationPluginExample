@@ -16,9 +16,9 @@ It supports JSON format. The syntax is `{"package": "TARGET_PACKAGE_NAME"}` wher
 Development
 -----
 
-In the development environment, this app locates in the same directory with Easer. Therefore, `../Easer` points to Easer's (repo) directory (for `remote_plugin` module).
+The key part is to use the `plugin` module of Easer. Therefore, this project uses `jitpack` to convert Easer's repository to a library.
 
-I'm exploring ways to publish `remote_plugin` as a library, so a Remote Plugin developer doesn't need to download Easer manually.
+Particularly, two `build.gradle` files needs to be modified. See [this page](https://jitpack.io/#renyuneyun/Easer/) for more details.
 
 License
 ------

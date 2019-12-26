@@ -1,2 +1,1 @@
-include ':app', ':plugin'
-project(':plugin').projectDir=new File('../Easer/plugin')
+include ':app'
